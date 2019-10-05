@@ -1,4 +1,4 @@
-package com.likhit.ranghirang.data;
+package com.likhit.ranghirang.data.model;
 
 import com.google.gson.annotations.SerializedName;
 

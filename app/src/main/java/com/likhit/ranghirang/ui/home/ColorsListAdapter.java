@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.likhit.ranghirang.data.Color;
+import com.likhit.ranghirang.data.model.Color;
 
 import java.util.List;
 
