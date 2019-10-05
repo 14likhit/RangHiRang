@@ -4,29 +4,41 @@
 
     <data>
 
+        <import type="android.graphics.Color" />
+
+        <variable
+            name="color"
+            type="com.likhit.ranghirang.data.model.Color" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/color_item_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@{Color.parseColor(color.color)}">
 
-        <ImageView
-            android:id="@+id/color_image_view"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:contentDescription="@string/default_content_description"
+        <TextView
+            android:id="@+id/color_name_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{color.name}"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/color_text_view"
+            android:id="@+id/color_code_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="COLOR"
-            app:layout_constraintStart_toStartOf="parent"
+            android:text="@{color.color}"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/color_image_view"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/color_name_text_view" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
