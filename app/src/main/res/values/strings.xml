@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RangHiRang</string>
+    <string name="default_content_description">ImageView</string>
 </resources>
