@@ -22,7 +22,7 @@ public class ColorsListViewModel extends AndroidViewModel implements OnResponseL
         super(application);
     }
 
-    private void getColors(int page) {
+    public void getColors(int page) {
         RemoteDataSourceClass.getInstance(ApiClient.getRetrofitInstance().create(ApiService.class)).getColors(page, this);
     }
 
