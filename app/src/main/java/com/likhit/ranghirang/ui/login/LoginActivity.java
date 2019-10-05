@@ -1,5 +1,6 @@
 package com.likhit.ranghirang.ui.login;
 
+import android.hardware.input.InputManager;
 import android.os.Bundle;
 import android.view.View;
 
@@ -10,6 +11,7 @@ import com.likhit.ranghirang.base.BaseActivity;
 import com.likhit.ranghirang.databinding.ActivityLoginBinding;
 import com.likhit.ranghirang.sharedPreference.PreferenceHelper;
 import com.likhit.ranghirang.utils.ActivityLauncher;
+import com.likhit.ranghirang.utils.Utils;
 
 public class LoginActivity extends BaseActivity {
 
@@ -26,14 +28,46 @@ public class LoginActivity extends BaseActivity {
 
     private void initView() {
 
+        binding.loginIdEditTextInput.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus && !validLoginId()) {
+                    binding.loginIdEditTextInput.setError(getString(R.string.login_id_error));
+                }
+            }
+        });
+
+        binding.loginPasswordEditTextInput.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus && !validLoginId()) {
+                    binding.loginPasswordEditTextInput.setError(getString(R.string.password_error));
+                }
+            }
+        });
+
         binding.loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PreferenceHelper.getInstance().saveUserLoggedIn(true);
-                ActivityLauncher.launchColorListActivity(LoginActivity.this);
-                finish();
+                if (validLoginId() && validPassword()) {
+                    Utils.hideSoftKeyboard(LoginActivity.this);
+                    PreferenceHelper.getInstance().saveUserLoggedIn(true);
+                    ActivityLauncher.launchColorListActivity(LoginActivity.this);
+                    finish();
+                } else {
+                    showMessage(R.string.login_error);
+                }
             }
         });
 
     }
+
+    private boolean validLoginId() {
+        return !binding.loginIdEditTextInput.getText().toString().equals("");
+    }
+
+    private boolean validPassword() {
+        return !binding.loginPasswordEditTextInput.getText().toString().equals("");
+    }
+
 }

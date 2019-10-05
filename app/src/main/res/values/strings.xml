@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">RangHiRang</string>
     <string name="default_content_description">ImageView</string>
+    <string name="login_id">Login ID</string>
+    <string name="password">Password</string>
+    <string name="login_error">Please Fill all fields</string>
+    <string name="password_error">Please fill password</string>
+    <string name="login_id_error">Please fill Login Id</string>
 </resources>
