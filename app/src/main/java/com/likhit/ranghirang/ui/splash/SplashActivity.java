@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import com.likhit.ranghirang.R;
 import com.likhit.ranghirang.databinding.ActivitySplashBinding;
+import com.likhit.ranghirang.sharedPreference.PreferenceHelper;
 import com.likhit.ranghirang.utils.ActivityLauncher;
 
 public class SplashActivity extends AppCompatActivity {
@@ -25,7 +26,11 @@ public class SplashActivity extends AppCompatActivity {
         binding.getRoot().postDelayed(new Runnable() {
             @Override
             public void run() {
-                ActivityLauncher.launchLoginActivity(SplashActivity.this);
+                if (PreferenceHelper.getInstance().getUserLoggedIn()) {
+                    ActivityLauncher.launchColorListActivity(SplashActivity.this);
+                } else {
+                    ActivityLauncher.launchLoginActivity(SplashActivity.this);
+                }
                 finish();
             }
         }, 5000);

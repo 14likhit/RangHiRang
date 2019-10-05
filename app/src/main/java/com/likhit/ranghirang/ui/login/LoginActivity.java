@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil;
 import com.likhit.ranghirang.R;
 import com.likhit.ranghirang.base.BaseActivity;
 import com.likhit.ranghirang.databinding.ActivityLoginBinding;
+import com.likhit.ranghirang.sharedPreference.PreferenceHelper;
 import com.likhit.ranghirang.utils.ActivityLauncher;
 
 public class LoginActivity extends BaseActivity {
@@ -28,7 +29,9 @@ public class LoginActivity extends BaseActivity {
         binding.loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                PreferenceHelper.getInstance().saveUserLoggedIn(true);
                 ActivityLauncher.launchColorListActivity(LoginActivity.this);
+                finish();
             }
         });
 

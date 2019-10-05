@@ -18,6 +18,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:padding="16dp"
             tools:context=".ui.login.LoginActivity">
 
             <com.google.android.material.textfield.TextInputLayout
@@ -33,6 +34,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Login"
+                    android:inputType="textPersonName"
                     android:textSize="24sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -49,7 +51,8 @@
                     android:id="@+id/login_password_edit_text_input"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Login"
+                    android:hint="Password"
+                    android:inputType="textPassword"
                     android:textSize="24sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
