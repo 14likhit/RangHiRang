@@ -7,19 +7,26 @@
 
     </data>
 
-    <LinearLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipr_refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".ui.home.ColorsListActivity">
+        android:layout_height="match_parent">
 
-        <include layout="@layout/toolbar_default" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/color_list_recycler_view"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/layout_color_item" />
+            android:orientation="vertical"
+            tools:context=".ui.home.ColorsListActivity">
 
-    </LinearLayout>
+            <include layout="@layout/toolbar_default" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/color_list_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/layout_color_item" />
+
+        </LinearLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

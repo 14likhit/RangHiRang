@@ -7,7 +7,9 @@ import android.widget.Toast;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.likhit.ranghirang.R;
 import com.likhit.ranghirang.base.BaseActivity;
@@ -19,7 +21,9 @@ import com.likhit.ranghirang.databinding.ActivityColorsBinding;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ColorsListActivity extends BaseActivity {
+import static com.likhit.ranghirang.customListener.OnScrollListener.PAGE_START;
+
+public class ColorsListActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     private static final String TAG = "ColorsListActivity";
 
@@ -56,6 +60,7 @@ public class ColorsListActivity extends BaseActivity {
     }
 
     private void initView() {
+        binding.swiprRefreshLayout.setOnRefreshListener(this);
         if (adapter == null) {
             adapter = new ColorsListAdapter();
         }
@@ -111,6 +116,7 @@ public class ColorsListActivity extends BaseActivity {
     }
 
     private void updateView(ColorList colorList) {
+        binding.swiprRefreshLayout.setRefreshing(false);
         if (colorList != null) {
             this.colorList = colorList;
             if (colorList.getColors() != null && colorList.getColors().size() > 0) {
@@ -135,4 +141,13 @@ public class ColorsListActivity extends BaseActivity {
             if (currentPage >= totalPage) isLastPage = true;
         }
     }
+
+    @Override
+    public void onRefresh() {
+        currentPage = PAGE_START;
+        isLastPage = false;
+        adapter.clear();
+        getColors();
+    }
+
 }
