@@ -2,6 +2,8 @@ package com.likhit.ranghirang.ui.home;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;
@@ -17,6 +19,8 @@ import com.likhit.ranghirang.customListener.OnScrollListener;
 import com.likhit.ranghirang.data.model.Color;
 import com.likhit.ranghirang.data.model.ColorList;
 import com.likhit.ranghirang.databinding.ActivityColorsBinding;
+import com.likhit.ranghirang.sharedPreference.PreferenceHelper;
+import com.likhit.ranghirang.utils.ActivityLauncher;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +59,8 @@ public class ColorsListActivity extends BaseActivity implements SwipeRefreshLayo
                 updateView(colorList);
             }
         });
+
+        setupToolbar(getString(R.string.app_name), false, true);
 
         initView();
     }
@@ -151,4 +157,19 @@ public class ColorsListActivity extends BaseActivity implements SwipeRefreshLayo
         getColors();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_logout, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.menu_logout) {
+            PreferenceHelper.getInstance().saveUserLoggedIn(false);
+            ActivityLauncher.launchLoginActivity(ColorsListActivity.this);
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

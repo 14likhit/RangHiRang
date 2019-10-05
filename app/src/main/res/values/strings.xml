@@ -6,4 +6,5 @@
     <string name="login_error">Please Fill all fields</string>
     <string name="password_error">Please fill password</string>
     <string name="login_id_error">Please fill Login Id</string>
+    <string name="logout">Logout</string>
 </resources>
