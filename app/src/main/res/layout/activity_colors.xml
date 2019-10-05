@@ -20,6 +20,12 @@
 
             <include layout="@layout/toolbar_default" />
 
+
+            <include
+                android:id="@+id/retry_layout"
+                layout="@layout/layout_retry"
+                android:visibility="gone" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/color_list_recycler_view"
                 android:layout_width="match_parent"

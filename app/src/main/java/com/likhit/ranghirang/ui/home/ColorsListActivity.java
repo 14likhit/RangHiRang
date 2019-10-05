@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;
@@ -113,6 +114,15 @@ public class ColorsListActivity extends BaseActivity implements SwipeRefreshLayo
 
         });
 
+        binding.retryLayout.retryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                binding.retryLayout.errorLayout.setVisibility(View.GONE);
+                binding.swiprRefreshLayout.setRefreshing(true);
+                getColors();
+            }
+        });
+
         getColors();
 
     }
@@ -146,6 +156,8 @@ public class ColorsListActivity extends BaseActivity implements SwipeRefreshLayo
             isLoading = false;
             if (currentPage < totalPage) adapter.addLoadingFooter();
             else isLastPage = true;
+        } else {
+            binding.retryLayout.errorLayout.setVisibility(View.VISIBLE);
         }
     }
 

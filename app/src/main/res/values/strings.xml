@@ -7,4 +7,6 @@
     <string name="password_error">Please fill password</string>
     <string name="login_id_error">Please fill Login Id</string>
     <string name="logout">Logout</string>
+    <string name="error_message">Unable to load.Click retry to try again.</string>
+    <string name="retry">Retry</string>
 </resources>
