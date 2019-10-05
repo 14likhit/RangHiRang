@@ -16,6 +16,10 @@ import androidx.appcompat.widget.Toolbar;
 import com.likhit.ranghirang.R;
 import com.likhit.ranghirang.utils.Utils;
 
+
+/**
+ * Base Activity->Parent Class for all activity
+ */
 @SuppressLint("Registered")
 public abstract class BaseActivity extends AppCompatActivity implements BaseView {
 
@@ -44,6 +48,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         super.attachBaseContext(newBase);
     }
 
+    //method to set toolbar.
     public void setupToolbar(@Nullable String title, boolean homeButtonEnable, boolean showIcon) {
         Toolbar toolbar = findViewById(R.id.toolbar);
         if (toolbar == null) {

@@ -1,6 +1,5 @@
 package com.likhit.ranghirang.ui.login;
 
-import android.hardware.input.InputManager;
 import android.os.Bundle;
 import android.view.View;
 

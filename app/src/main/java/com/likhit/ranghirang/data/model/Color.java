@@ -2,6 +2,7 @@ package com.likhit.ranghirang.data.model;
 
 import com.google.gson.annotations.SerializedName;
 
+//model class for color
 public class Color {
 
     @SerializedName("id")

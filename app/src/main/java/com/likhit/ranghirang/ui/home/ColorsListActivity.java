@@ -28,6 +28,9 @@ import java.util.List;
 
 import static com.likhit.ranghirang.customListener.OnScrollListener.PAGE_START;
 
+/**
+ * Home Activity to show list of colors.
+ */
 public class ColorsListActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     private static final String TAG = "ColorsListActivity";
@@ -52,8 +55,10 @@ public class ColorsListActivity extends BaseActivity implements SwipeRefreshLayo
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_colors);
 
+        //ViewModel Initialisation
         colorsListViewModel = ViewModelProviders.of(this).get(ColorsListViewModel.class);
 
+        //Adding Observer
         colorsListViewModel.colorListMutableLiveData.observe(this, new Observer<ColorList>() {
             @Override
             public void onChanged(ColorList colorList) {
@@ -80,6 +85,7 @@ public class ColorsListActivity extends BaseActivity implements SwipeRefreshLayo
         binding.colorListRecyclerView.setLayoutManager(linearLayoutManager);
         binding.colorListRecyclerView.setAdapter(adapter);
 
+        //Implemented Custom Scroll Listener
         binding.colorListRecyclerView.addOnScrollListener(new OnScrollListener(linearLayoutManager) {
 
             @Override
@@ -127,6 +133,7 @@ public class ColorsListActivity extends BaseActivity implements SwipeRefreshLayo
 
     }
 
+    //make request call
     private void getColors() {
         colorsListViewModel.getColors(currentPage);
     }

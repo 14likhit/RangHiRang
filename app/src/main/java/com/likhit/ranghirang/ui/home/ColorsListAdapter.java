@@ -15,8 +15,12 @@ import com.likhit.ranghirang.databinding.LayoutProgressBinding;
 
 import java.util.List;
 
+/**
+ * Adapter class to show list of color
+ */
 public class ColorsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+    //view type statics
     private static final int COLORS = 0;
     private static final int LOADING = 1;
 
@@ -41,6 +45,7 @@ public class ColorsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             layoutInflater = LayoutInflater.from(parent.getContext());
         }
         RecyclerView.ViewHolder viewHolder = null;
+        //Implementing two view holder
         switch (viewType) {
             case COLORS:
                 viewHolder = new ColorsListAdapter.ColorListViewHolder(layoutInflater.inflate(R.layout.layout_color_item, parent, false));

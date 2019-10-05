@@ -12,11 +12,10 @@ import com.likhit.ranghirang.data.remote.ApiClient;
 import com.likhit.ranghirang.data.remote.ApiService;
 import com.likhit.ranghirang.data.remote.RemoteDataSourceClass;
 
+//ViewModel for to manage colorsList
 public class ColorsListViewModel extends AndroidViewModel implements OnResponseListener<ColorList> {
 
     MutableLiveData<ColorList> colorListMutableLiveData = new MutableLiveData<>();
-
-    private RemoteDataSourceClass remoteDataSourceClass;
 
     public ColorsListViewModel(@NonNull Application application) {
         super(application);

@@ -9,6 +9,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * Repository Class to fetch response from network.
+ */
 public class RemoteDataSourceClass implements RemoteDataSource {
 
     private static final String TAG = "RemoteDataSourceClass";
