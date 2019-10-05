@@ -124,21 +124,22 @@ public class ColorsListActivity extends BaseActivity implements SwipeRefreshLayo
                     totalPage = colorList.getTotalPages();
                 }
                 if (adapter.getColors() != null) {
+                    if (adapter.getColors().size() > 0) {
+                        adapter.removeLoadingFooter();
+                    }
                     adapter.addAll(colorList.getColors());
-                    adapter.addLoadingFooter();
                     this.colorsDetailList = adapter.getColors();
                 } else if (colorList.getColors() != null) {
                     adapter.setColors(colorList.getColors());
                     this.colorsDetailList = colorList.getColors();
-                    adapter.addLoadingFooter();
                     adapter.notifyDataSetChanged();
                 }
             } else {
                 Toast.makeText(this, "Unable to load", Toast.LENGTH_SHORT).show();
             }
-            adapter.removeLoadingFooter();
             isLoading = false;
-            if (currentPage >= totalPage) isLastPage = true;
+            if (currentPage < totalPage) adapter.addLoadingFooter();
+            else isLastPage = true;
         }
     }
 
